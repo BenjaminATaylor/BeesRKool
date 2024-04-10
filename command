@@ -1,6 +1,6 @@
-nextflow run BeesRKool \
+nextflow run main.nf \
     --samplesheet "input/samplesheet.csv" \
     --countsframe "input/genecounts.tsv" \
-    --reflevel "Pre-treatment" \
+    --reflevel "nurse" \
     --outdir "output" \
     -w work

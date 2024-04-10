@@ -28,7 +28,7 @@ process DESEQ_BASIC{
   write.csv(data.frame(results(dds.deg)),row.names=TRUE, file = "deseq_table.csv")
   
   # get list of degs
-  DEGs = row.names(subset(data.frame(results(dds.deg)), padj<0.05)
+  DEGs = row.names(subset(data.frame(results(dds.deg)), padj<0.05))
   write(DEGs, file = "deseq_degs.txt")
   
   """
