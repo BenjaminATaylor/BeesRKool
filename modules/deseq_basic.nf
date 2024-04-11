@@ -8,7 +8,7 @@ process DESEQ_BASIC{
 
   output:
   path "deseq_table.csv", emit: table
-  path "deseq_degs.txt"
+  path "deseq_degs.txt", emit: degs
 
   script:
   """
@@ -28,7 +28,7 @@ process DESEQ_BASIC{
   write.csv(data.frame(results(dds.deg)),row.names=TRUE, file = "deseq_table.csv")
   
   # get list of degs
-  DEGs = row.names(subset(data.frame(results(dds.deg)), padj<0.05))
+  DEGs = row.names(subset(data.frame(results(dds.deg)), padj<0.05 & abs(log2FoldChange) > 1))
   write(DEGs, file = "deseq_degs.txt")
   
   """
